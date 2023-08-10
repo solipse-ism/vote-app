@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="main.js"></script>
+	<title>Vote Search</title>
+</head>
+<body>
+	<div class="flex-h bg-purple align-items-center horizontal-align big-search-icon"><i class="fa-solid fa-magnifying-glass text-white horizontal-align" style="font-size: 11em;"></i></div>
+	<div class="width-100 input-container-1 mt-xxxl">
+		<label class="text-purple text-bold" for="vote-id">Vote ID : </label>
+		<input class="text-bold text-purple width-100" style="padding: 10px 44px 10px 80px;" type="text" id="vote-id">
+		<i class="fa-regular fa-circle-xmark clear-icon" style="color: #7747fd;"></i>
+	</div>
+	<button class="purple-btn flex-h justify-content-center align-items-center horizontal-align bg-purple text-white text-rl text-bold rounded-corner-xs" id="confirm-vote-btn" style="margin-top: 74px;">
+		Confirm Vote ID</button>
+	<div class="flex-h align-items-center justify-content-center width-100">
+		<button class="mt-srr nav-icon-btn bg-transparent">
+			<i class="fa-solid fa-qrcode text-grey text-l"></i></button>
+	</div>
+	<nav class="flex-h width-100 align-items-center navbar">
+		<button class="nav-icon-btn bg-transparent" id="home-icon" onclick="goHome()">
+			<i class="fa-solid fa-house text-grey" style="font-size: 1em;"></i></button>
+		<button class="nav-icon-btn bg-transparent" id="search-icon" onclick="goSearch()">
+			<i class="fa-solid fa-magnifying-glass text-purple" style="font-size: 1em;"></i></button>
+		<button class="nav-icon-btn bg-transparent" id="admin-icon" onclick="goAdminLogin()">
+			<i class="fa-solid fa-user text-grey" style="font-size: 1em;"></i></button>
+	</nav>
+</body>
+</html>

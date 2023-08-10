@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="main.js"></script>
+    <title>Answer Rank</title>
+</head>
+<body>
+	<section class="width-100 flex-h align-items-top justify-content-sb"  style="margin-bottom: 0.8em;">
+		<button class="nav-icon-btn bg-transparent" onclick="goSearch()">
+			<i class="fa-solid fa-left-long text-purple" style="font-size: 1.5em;"></i></button>
+		<div class="topic-name text-r text-bold text-balck" id="topic-name-answer-list">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX?</div>
+	</section>
+	<h1 class="text-l text-center text-black mt-srr">TOP 5 ANSWERS</h1>
+	<section class="podium-wrap width-100">
+		<div class="podium-box" id="num2">10</div>
+		<div class="podium-box" id="num1">15</div>
+		<div class="podium-box" id="num3">7</div>
+		<div class="podium-text" id="num2-amount">XXXX</div>
+		<div class="podium-text" id="num1-amount">XXXX</div>
+		<div class="podium-text" id="num3-amount">XXXX</div>
+	</section>
+	<section class="podium-for-45 width-100">
+		<div class="p45" id="num4">
+			<div class="flex-h justify-content-center align-items-center circle text-grey text-bold bg-white text-l">4</div>
+			<div class="podium-text" style="color: white;" id="num4-amount">XXXX</div>
+		</div>
+		<div class="p45" id="num5">
+			<div class="flex-h justify-content-center align-items-center circle text-grey text-bold bg-white text-l">2</div>
+			<div class="podium-text" style="color: white;" id="num5-amount">XXXX</div>
+		</div>
+	</section>
+	<div class="rule width-100 bg-black" style="margin-top: 26px; margin-bottom: 31px;" ></div>
+	<button class="rank-ans-btn horizontal-align" onclick="goAnsList()">
+		<i class="fa-solid fa-bars fa-gradient" style="font-size: 2em; margin-left: 30px;"></i>
+		<div class="rank-ans-text text-rll" style="margin-right: 50px;">Card View</div>
+	</button>
+	<nav class="flex-h width-100 align-items-center navbar">
+		<button class="nav-icon-btn bg-transparent" id="home-icon" onclick="goHome()">
+			<i class="fa-solid fa-house text-grey" style="font-size: 1em;"></i></button>
+		<button class="nav-icon-btn bg-transparent" id="search-icon" onclick="goSearch()">
+			<i class="fa-solid fa-magnifying-glass text-grey" style="font-size: 1em;"></i></button>
+		<button class="nav-icon-btn bg-transparent" id="admin-icon" onclick="goAdminLogin()">
+			<i class="fa-solid fa-user text-grey" style="font-size: 1em;"></i></button>
+	</nav>
+</body>
+</html>

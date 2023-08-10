@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="main.js"></script>
+    <title>Vote</title>
+</head>
+<body>
+	<button class="nav-icon-btn bg-transparent" onclick="goSearch()">
+		<i class="fa-solid fa-left-long text-purple" style="font-size: 1.5em;"></i></button>
+	<h1 class="width-100 topic-name text-xxl text-bold text-black" id="vote-topic-name">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h1>
+	<h2 class="width-100 text-s text-light text-black mt-xxs" id="vote-topic-desc">xxxxxx</h2>
+	<div class="width-100 input-container-2 mt-r">
+		<input class="text-bold text-purple width-100" type="text" id="nickname" placeholder="Prefer Name">
+		<textarea class="text-bold text-purple width-100 mt-s" type="text" id="answer" placeholder="Answer"></textarea>
+	</div>
+	<button class="purple-btn flex-h justify-content-center align-items-center horizontal-align bg-gradient text-white text-rl text-bold rounded-corner-xs" id="ans-send" style="margin-top: 2em;" onclick="goAnsList()">Send</button>
+	<nav class="flex-h width-100 align-items-center navbar">
+		<button class="nav-icon-btn bg-transparent" id="home-icon" onclick="goHome()">
+			<i class="fa-solid fa-house text-grey" style="font-size: 1em;"></i></button>
+		<button class="nav-icon-btn bg-transparent" id="search-icon" onclick="goSearch()">
+			<i class="fa-solid fa-magnifying-glass text-grey" style="font-size: 1em;"></i></button>
+		<button class="nav-icon-btn bg-transparent" id="admin-icon" onclick="goAdminLogin()">
+			<i class="fa-solid fa-user text-grey" style="font-size: 1em;"></i></button>
+	</nav>
+</body>
+</html>

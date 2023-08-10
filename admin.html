@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="main.js"></script>
+    <title>Admin</title>
+</head>
+<body>
+    <div class="flex-h justify-content-center align-items-center">
+        <input class="topic-search text-purple text-bold text-r" id="searchInput" placeholder="Search for topic">
+    </div>
+    <section class="horizontal-align created-topic flex-v" id="topics-list" style="margin-top: 17px;">
+        <!-- <button class="topic-card flex-h rounded-corner-s">
+            <div class="topic-card-name">TOPIC: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
+            <i class="fas fa-copy text-white" style="align-self: center;font-size:2em;"></i>
+        </button> -->
+    </section>
+	<div class="rule width-100 bg-black" style="margin-top: 26px; margin-bottom: 31px;" ></div>
+    <p class="text-guide text-center text-grey text-srr text-light" style="margin-top: 17px;">To edit: tap on the existing card</p>
+    <button class="horizontal-align create-card flex-h rounded-corner-s" style="margin-top: 20px;">
+        <div class="add-icon" style="margin-left: 15px;">
+            <div>
+                <p>+</p>
+            </div>
+        </div>
+        <div class="create-topic-text" id="create-topic-btn" style="align-self: center; margin-right: 15px;">Create Topic</div>
+    </button>
+	<nav class="flex-h width-100 align-items-center navbar">
+		<button class="nav-icon-btn bg-transparent" id="home-icon" onclick="goHome()">
+			<i class="fa-solid fa-house text-grey" style="font-size: 1em;"></i></button>
+		<button class="nav-icon-btn bg-transparent" id="search-icon" onclick="goSearch()">
+			<i class="fa-solid fa-magnifying-glass text-grey" style="font-size: 1em;"></i></button>
+		<button class="nav-icon-btn bg-transparent" id="admin-icon" onclick="goAdminLogin()">
+			<i class="fa-solid fa-user text-purple" style="font-size: 1em;"></i></button>
+	</nav>
+</body>
+</html>
