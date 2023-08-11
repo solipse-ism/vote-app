@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Param } from '@nestjs/common';
+import { Controller, Post, Body, Param, Get } from '@nestjs/common';
 import { VoteService } from './vote.service';
 
 @Controller('vote')
@@ -7,7 +7,13 @@ export class VoteController {
   
   @Post()
   insVote(@Body() body: any): string {
+    console.log(body);
     const res: any = this.voteService.insVote(body);
+    return res;
+  }
+  @Get('all/:id')
+  findAll(@Param() params: any): string{
+    const res: any = this.voteService.getAllVote(params.id);
     return res;
   }
 }

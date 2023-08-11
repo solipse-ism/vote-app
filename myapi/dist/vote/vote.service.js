@@ -20,6 +20,20 @@ let VoteService = exports.VoteService = class VoteService {
         this.knex = knex;
     }
     async insVote(data) {
+        try {
+            await this.knex('vote_content').insert(data);
+            return { 'success': true };
+        }
+        catch (error) {
+            console.log(error);
+            return error;
+        }
+    }
+    async getAllVote(voteID) {
+        const data = await this.knex('vote_content')
+            .select()
+            .where('topic_id', voteID);
+        return data;
     }
 };
 exports.VoteService = VoteService = __decorate([

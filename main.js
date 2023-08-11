@@ -10,6 +10,8 @@ const isOnAdminLogin = location.pathname === '/admin-login.html';
 const isOnTopic = location.pathname === '/topic.html';
 const isOnVoteSearch = location.pathname === '/vote-search.html';
 const isOnVote = location.pathname === '/vote.html';
+const isOnAnsList = location.pathname === '/answer-list.html';
+const isOnAnsRank = location.pathname === '/answer-rank.html';
 const hasStoredTopicQuery = localStorage.getItem('topicQueryId');
 const hasStoredVoteID = localStorage.getItem('voteID');
 const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -63,13 +65,41 @@ function goTopic() {
   location.href = 'topic.html';
 }
 
+async function  postAnswer(nickname, answer, voteID){
+  this.nickname = nickname;
+  this.answer = answer;
+  this.voteID = voteID;
+  try {
+    const response = await fetch("http://localhost:3000/vote", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nickname: this.nickname,
+        answer: this.answer,
+        topic_id: this.voteID,
+      })
+    });
+    if (response.ok) {
+      console.log("Success");
+      goAnsList();
+    } else {
+      console.log(response.status);
+    }
+  }
+  catch (errors){
+    console.log(errors);
+    error = true;    
+  }
+}
 
 async function copyTopicID (topicID) {
   try {
     await navigator.clipboard.writeText(topicID);
     console.log('Content copied to clipboard');
-  } catch (err) {
-    console.error('Failed to copy: ', err);
+  } catch (error) {
+    console.error('Failed to copy: ', error);
   }
 }
 function formatDateForSorting(date) {
@@ -167,6 +197,22 @@ async function fetchAllTopic(){
     console.log('please reload to fetch data again');
   }
 }
+async function fetchAllVote(){
+  try{
+    const response = await fetch(`http://localhost:3000/vote/all/${voteID}`);
+    if (response.ok){
+      const allVote = await response.json();
+      console.log(allVote);
+      return allVote;
+    } else {
+      console.error(response.status);
+    }
+  }
+  catch (error){
+    console.log(error);
+    console.log('please reload to fetch data again');
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () =>{
   const username = document.getElementById("username")
@@ -184,9 +230,110 @@ document.addEventListener("DOMContentLoaded", () =>{
       console.log(topicDTO);
       topicName.innerHTML = topicDTO.name;
       topicDesc.innerHTML = topicDTO.description;
+      const nickname = document.querySelector('#nickname');
+      const answer = document.querySelector('#answer');
+      const ansBtn = document.querySelector('#ans-send');
+      ansBtn.onclick = () =>{
+        if (nickname.value && answer.value) {
+          postAnswer(nickname.value, answer.value, voteID);
+        }
+      }
     
     })();
-  } else {
+  } else if (isOnAnsList) { 
+    (async () => {
+      const topicDTO = await fetchTopicData(voteID);
+      const topicName = document.querySelector('#topic-name-answer-list');
+      topicName.innerHTML = topicDTO.name;
+      const allRetrieveVote = await fetchAllVote();
+      const sortedTopicsByDate = allRetrieveVote.sort((a, b) => {
+        const dateA = formatDateForSorting(a.submit_time);
+        const dateB = formatDateForSorting(b.submit_time);
+        return dateB.localeCompare(dateA);
+      });
+      const voteList = document.querySelector('.purple-list-box');
+      voteList.innerHTML = '';
+      
+      sortedTopicsByDate.forEach((vote) => {
+        const li = document.createElement('li');
+        const nickname = document.createElement('div');
+        const answer = document.createElement('div');
+        
+        nickname.className = 'user-ans';
+        answer.className = 'user-ans-content';
+        nickname.textContent = `${vote.nickname}`;
+        answer.textContent = `${vote.answer}`;
+        
+        li.appendChild(nickname);
+        li.appendChild(answer);
+        voteList.appendChild(li);
+      });
+    })();
+  } else if (isOnAnsRank) {
+    (async () => {
+      const topicDTO = await fetchTopicData(voteID);
+      const topicName = document.querySelector('#topic-name-answer-list');
+      topicName.innerHTML = topicDTO.name;
+      const allRetrieveVote = await fetchAllVote();
+      const answerCount = {};
+      let totalAnswerCount = 0;
+      allRetrieveVote.forEach(vote => {
+        const answer = vote.answer;
+        answerCount[answer] = (answerCount[answer] || 0) + 1;
+        totalAnswerCount++;
+      });
+      let maxCount = 0;
+      for (const answer in answerCount) {
+        if (answerCount[answer] > maxCount) {
+          mostCommonAnswer = answer;
+          maxCount = answerCount[answer];
+        }
+      }
+      const sortedAnswers = Object.keys(answerCount).sort((a, b) => answerCount[b] - answerCount[a]);
+      const mostCommonAnswers = sortedAnswers.slice(0, 5);
+
+      const resultArray = mostCommonAnswers.map(answer => {
+        return {
+          answer: answer,
+          count: answerCount[answer],
+          allRetrieveVote: allRetrieveVote.filter(item => item.answer === answer)
+        };
+      });
+      const proportions = resultArray.map(answer => answer.count / totalAnswerCount);
+
+      const no1content = document.getElementById('num1-content');
+      const no2content = document.getElementById('num2-content');
+      const no3content = document.getElementById('num3-content');
+      const no4content = document.getElementById('num4-content');
+      const no5content = document.getElementById('num5-content');
+      const no1 = document.getElementById('num1');
+      const no2 = document.getElementById('num2');
+      const no3 = document.getElementById('num3');
+      const no4 = document.getElementById('num4');
+      const no5 = document.getElementById('num5');
+      no1.style.height = (proportions[0] * 100) + '%';  
+      no2.style.height = (proportions[1] * 100) + '%';
+      no3.style.height = (proportions[2] * 100) + '%';
+      no4.style.height = (proportions[3] * 100) + '%';
+      no5.style.height = (proportions[4] * 100) + '%';
+      no1content.setAttribute('title', resultArray[0].answer);
+      no2content.setAttribute('title', resultArray[1].answer);
+      no3content.setAttribute('title', resultArray[2].answer);
+      no4content.setAttribute('title', resultArray[3].answer);
+      no5content.setAttribute('title', resultArray[4].answer);
+      no1content.innerHTML = resultArray[0].answer;
+      no2content.innerHTML = resultArray[1].answer;
+      no3content.innerHTML = resultArray[2].answer;
+      no4content.innerHTML = resultArray[3].answer;
+      no5content.innerHTML = resultArray[4].answer;
+      no1.innerHTML = resultArray[0].count;
+      no2.innerHTML = resultArray[1].count;
+      no3.innerHTML = resultArray[2].count;
+      no4.innerHTML = resultArray[3].count;
+      no5.innerHTML = resultArray[4].count;
+    })();
+
+  }else {
     localStorage.removeItem("voteID");
   }
   if (isOnVoteSearch){
@@ -231,9 +378,7 @@ document.addEventListener("DOMContentLoaded", () =>{
       localStorage.setItem('isCreatingTopic', isCreatingTopic)
     }
   }
-
-
-  // TODO: add all of the topic into localStorage for when server database is offline
+  // might TODO: add all of the topic into localStorage for when server database is offline
   if(isOnAdmin){
     (async () => {
       const allRetrieveTopic = await fetchAllTopic();

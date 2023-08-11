@@ -20,7 +20,12 @@ let VoteController = exports.VoteController = class VoteController {
         this.voteService = voteService;
     }
     insVote(body) {
+        console.log(body);
         const res = this.voteService.insVote(body);
+        return res;
+    }
+    findAll(params) {
+        const res = this.voteService.getAllVote(params.id);
         return res;
     }
 };
@@ -31,6 +36,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", String)
 ], VoteController.prototype, "insVote", null);
+__decorate([
+    (0, common_1.Get)('all/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", String)
+], VoteController.prototype, "findAll", null);
 exports.VoteController = VoteController = __decorate([
     (0, common_1.Controller)('vote'),
     __metadata("design:paramtypes", [vote_service_1.VoteService])
