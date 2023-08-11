@@ -12,6 +12,7 @@ const isOnVoteSearch = location.pathname === '/vote-search.html';
 const isOnVote = location.pathname === '/vote.html';
 const isOnAnsList = location.pathname === '/answer-list.html';
 const isOnAnsRank = location.pathname === '/answer-rank.html';
+const isOnIndex = location.pathname === '/index.html';
 const hasStoredTopicQuery = localStorage.getItem('topicQueryId');
 const hasStoredVoteID = localStorage.getItem('voteID');
 const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -181,6 +182,21 @@ async function checkVoteIDExist(topicID){
     console.log('please reload to fetch data again');
   }
 }
+async function fetchAllPublicTopic(){
+  try {
+    const response = await fetch('http://localhost:3000/topic')
+    if(response.ok) {
+      const allPublicTopic = await response.json();
+      console.log(allPublicTopic);
+      return allPublicTopic;
+    } else {
+      console.error (response.status);
+    }
+  } catch (error){
+    console.log(error);
+    console.log('please reload to fetch data again'); 
+  }
+}
 async function fetchAllTopic(){ 
   try{
     const response = await fetch(`http://localhost:3000/topic/all/${loginID}`)
@@ -222,6 +238,19 @@ document.addEventListener("DOMContentLoaded", () =>{
   const createTopicBtn = document.querySelector("#create-topic-btn");
   const topicCreateBtn = document.querySelector('.topic-create-btn')
   
+  if (isOnIndex){
+    (async () => {
+      const allPublicTopic = await fetchAllPublicTopic();
+      const sortedPublicTopicsByDate = allPublicTopic.sort((a, b) => {
+        const dateA = formatDateForSorting(a.submit_time);
+        const dateB = formatDateForSorting(b.submit_time);
+        return dateB.localeCompare(dateA);
+      });
+      const latestPublicTopic = getElementById('latest-public-topic');
+      console.log(latestPublicTopic)
+      
+    })();
+  }
   if (isOnVote) {
     (async () => {
       const topicDTO = await fetchTopicData(voteID);

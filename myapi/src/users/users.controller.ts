@@ -13,11 +13,9 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // @Get()
-  // findOne(@Param() params: any): string {
-  //   console.log(params.id);
-
-  //   const res: any = this.usersService.getAllUser(params.id);
+  // @Get('all')
+  // findOne(): string {
+  //   const res: any = this.usersService.getAllUser();
   //   return res;
   // }
 

@@ -4,6 +4,7 @@ export declare class TopicService {
     constructor(knex: Knex);
     updateTopic(data: any, topic: any): Promise<any>;
     checkID(data: any): Promise<any>;
+    getAllPublicTopics(): Promise<any>;
     getAllTopic(loginID: any): Promise<any>;
     getOneTopic(topicID: any): Promise<any>;
     generateVoteCode(): string;

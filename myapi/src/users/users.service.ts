@@ -5,7 +5,7 @@ import { InjectKnex, Knex } from 'nestjs-knex';
 export class UsersService {
   constructor(@InjectKnex() private readonly knex: Knex) {}
 
-  // async getAllUser(user: any): Promise<any> {
+  // async getAllUser(): Promise<any> {
   //   const sql = `SELECT * FROM users`;
   //   const data: any = await this.knex.raw(sql);
   //   console.log(data[0]);

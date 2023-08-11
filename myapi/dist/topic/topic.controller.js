@@ -27,6 +27,15 @@ let TopicController = exports.TopicController = class TopicController {
         const res = this.topicService.getOneTopic(params.id);
         return res;
     }
+    findAllPublicTopic() {
+        console.log("success");
+        const res = this.topicService.getAllPublicTopics();
+        return ("Success");
+    }
+    findAllPublicTopics() {
+        const res = this.topicService.getAllPublicTopics();
+        return res;
+    }
     checkID(body) {
         const res = this.topicService.checkID(body);
         return res;
@@ -57,6 +66,18 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", String)
 ], TopicController.prototype, "findOneTopic", null);
+__decorate([
+    (0, common_1.Get)('public/'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], TopicController.prototype, "findAllPublicTopic", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], TopicController.prototype, "findAllPublicTopics", null);
 __decorate([
     (0, common_1.Post)('checkID/'),
     __param(0, (0, common_1.Body)()),

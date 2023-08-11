@@ -41,6 +41,13 @@ let TopicService = exports.TopicService = class TopicService {
             return error;
         }
     }
+    async getAllPublicTopics() {
+        const data = await this.knex('spread_head')
+            .select()
+            .where('public_or_private', 'public');
+        console.log(data);
+        return data;
+    }
     async getAllTopic(loginID) {
         const data = await this.knex('spread_head')
             .select()

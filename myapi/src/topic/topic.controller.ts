@@ -15,6 +15,17 @@ export class TopicController {
     const res: any = this.topicService.getOneTopic(params.id);
     return res;
   }
+  @Get('public/')
+  findAllPublicTopic(): string {
+    console.log("success");
+    const res: any = this.topicService.getAllPublicTopics();
+    return("Success");
+  }
+  @Get()
+  findAllPublicTopics(): string {
+    const res: any = this.topicService.getAllPublicTopics();
+    return res;
+  }
 
   @Post('checkID/')
   checkID(@Body() body: any): string {
