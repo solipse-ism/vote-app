@@ -6,13 +6,12 @@ let isCreatingTopic = false;
 const hasStoredLoginID = localStorage.getItem('loginID');
 const hasStoredCreateTopic = localStorage.getItem('isCreatingTopic');
 const isOnAdmin = location.pathname === '/admin.html';
-const isOnAdminLogin = location.pathname === '/admin-login.html';
+const isOnAdminLogin = location.pathname === '/index.html';
 const isOnTopic = location.pathname === '/topic.html';
 const isOnVoteSearch = location.pathname === '/vote-search.html';
 const isOnVote = location.pathname === '/vote.html';
 const isOnAnsList = location.pathname === '/answer-list.html';
 const isOnAnsRank = location.pathname === '/answer-rank.html';
-const isOnIndex = location.pathname === '/index.html';
 const hasStoredTopicQuery = localStorage.getItem('topicQueryId');
 const hasStoredVoteID = localStorage.getItem('voteID');
 const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -38,32 +37,32 @@ if (hasStoredTopicQuery){
 }
 
 function goHome() {
-  location.href = 'index.html';
+  location.href = '/index.html';
 }
 function goSearch() {
-  location.href = 'vote-search.html';
+  location.href = '/vote-search.html';
 }
 function goAdminLogin() {
   if(loginID){
     goAdmin();
   } else {
-    location.href = 'admin-login.html';
+    location.href = '/index.html';
   }
 }
 function goAdmin() {
-  location.href = 'admin.html';
+  location.href = '/admin.html';
 }
 function goVote() {
-  location.href = 'vote.html';
+  location.href = '/vote.html';
 }
 function goAnsList() {
-  location.href = 'answer-list.html';
+  location.href = '/answer-list.html';
 }
 function goAnsRank() {
-  location.href = 'answer-rank.html';
+  location.href = '/answer-rank.html';
 }
 function goTopic() {
-  location.href = 'topic.html';
+  location.href = '/topic.html';
 }
 
 async function  postAnswer(nickname, answer, voteID){
@@ -238,19 +237,6 @@ document.addEventListener("DOMContentLoaded", () =>{
   const createTopicBtn = document.querySelector("#create-topic-btn");
   const topicCreateBtn = document.querySelector('.topic-create-btn')
   
-  if (isOnIndex){
-    (async () => {
-      const allPublicTopic = await fetchAllPublicTopic();
-      const sortedPublicTopicsByDate = allPublicTopic.sort((a, b) => {
-        const dateA = formatDateForSorting(a.submit_time);
-        const dateB = formatDateForSorting(b.submit_time);
-        return dateB.localeCompare(dateA);
-      });
-      const latestPublicTopic = getElementById('latest-public-topic');
-      console.log(latestPublicTopic)
-      
-    })();
-  }
   if (isOnVote) {
     (async () => {
       const topicDTO = await fetchTopicData(voteID);
@@ -318,9 +304,17 @@ document.addEventListener("DOMContentLoaded", () =>{
           maxCount = answerCount[answer];
         }
       }
+      console.log(answerCount["d"]);
       const sortedAnswers = Object.keys(answerCount).sort((a, b) => answerCount[b] - answerCount[a]);
       const mostCommonAnswers = sortedAnswers.slice(0, 5);
-
+      (function assignValue(){
+        for (let i = 0; i<5; i++){
+          if (!!!mostCommonAnswers[i]){
+            mostCommonAnswers[i] = "";
+            answerCount[""] = 0;
+          }
+        };
+      })();
       const resultArray = mostCommonAnswers.map(answer => {
         return {
           answer: answer,
@@ -329,7 +323,6 @@ document.addEventListener("DOMContentLoaded", () =>{
         };
       });
       const proportions = resultArray.map(answer => answer.count / totalAnswerCount);
-
       const no1content = document.getElementById('num1-content');
       const no2content = document.getElementById('num2-content');
       const no3content = document.getElementById('num3-content');

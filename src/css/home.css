@@ -1,0 +1,10 @@
+#latest-public-topic{
+    padding: 20px 28.5px;
+    height: 137px;
+    box-shadow: 0 90px 200px 0px rgba(180, 180, 180, 0.47);
+}
+.older-public-topic{
+	padding: 17.5px 17.5px;
+	width: 43%;
+	min-height: 80px;
+}

@@ -1,0 +1,90 @@
+::-webkit-scrollbar {
+	display: none;
+}
+#topics-list{
+	overflow: auto;
+}
+.topic-search{
+	width: 290px;
+	height: 37px;
+	border-radius: 18px;
+	border: 3px solid #7747FD;
+	padding: 5px 15px 5px 15px;
+}
+.topic-search::placeholder{
+	color: #7747FD;
+}
+.created-topic{
+	width: 285px;
+	height: 378px;
+	justify-content: flex-start;
+	gap: 27px;
+}
+.topic-card{
+	width: 275px;
+	height: 108px;
+	border: 3px solid #FFF;
+	background: #7747FD;
+	box-shadow: 6px 7px 0px 0px #7747FD;
+	padding: 15px 15px 15px 15px;
+	justify-content: space-between;
+}
+.topic-card:active{
+	opacity: 0.8;
+}
+.create-card{
+	width: 275px;
+	height: 108px;
+	border: 3px solid #FFF;
+	background: #7747FD;
+	box-shadow: 6px 7px 0px 0px #7747FD;
+	padding: 15px 15px 15px 15px;
+	justify-content: space-between;
+}
+.create-card:active{
+	opacity: 0.8;
+}
+.topic-card-name{
+	min-width: 185px;
+	text-align: left;
+	max-width: 185px;
+	min-height: 60.231px;
+	max-height: 60.231px;
+	color: #FFF;
+	overflow: hidden;
+	font-size: 15px;
+	font-weight: 700;
+	align-self: center;
+}
+.text-guide{
+	width: 327px;
+	height: 25px;
+}
+.add-icon{
+	background: white;
+	width: 31.82px;
+	height: 31.82px;
+	align-self: center;
+	transform: rotate(45deg);
+	border-radius: 8px;
+	box-shadow: 2px 2px 22px 0px rgba(0, 0, 0, 0.15);
+}
+.add-icon div{
+	display: flex;
+	transform: rotate(-45deg);
+}
+.add-icon div p{
+	color: #7747FD;
+	position: relative;
+	left: 7px;
+	bottom: 4px;
+	text-align: center;
+	font-family: Inter;
+	font-size: 30px;
+	font-weight: 700;
+}
+.create-topic-text{
+	color: #FFF;
+	font-size: 24px;
+	font-weight: 700;
+}

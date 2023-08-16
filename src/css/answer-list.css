@@ -1,0 +1,28 @@
+.user-ans{
+    color: white;
+	font-size: 15px;
+	font-weight: 700;
+}
+.user-ans-content{
+	color: white;
+	font-weight: 700;
+	width: 180px;
+    font-size: 0.8rem;
+}
+.rank-ans-btn{
+	display: flex;
+	width: 261px;
+	height: 43px;
+	padding: 6.998px 12.25px 9px 16px;
+	background: transparent;
+	border: none;
+	justify-content: space-between;
+	align-items: center;
+}
+.rank-ans-text{
+	background: linear-gradient(167deg, #7747FD 0%, #E60AC9 86.46%, #F800C1 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: 700;
+}
