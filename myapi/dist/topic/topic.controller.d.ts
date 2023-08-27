@@ -2,6 +2,7 @@ import { TopicService } from './topic.service';
 export declare class TopicController {
     private readonly topicService;
     constructor(topicService: TopicService);
+    findAllRecentTopic(params: any): string;
     findAllTopic(params: any): string;
     findOneTopic(params: any): string;
     findAllPublicTopic(): string;

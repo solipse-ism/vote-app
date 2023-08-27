@@ -5,17 +5,41 @@ import { InjectKnex, Knex } from 'nestjs-knex';
 export class TopicService {
   constructor(@InjectKnex() private readonly knex: Knex) {}
 
+  async getAllRecentTopic(data: any): Promise<any> {
+    const userId = data;
+    try {
+      const username : any = await this.knex('users')
+        .select('username')
+        .where('id', `${userId}`)
+      const recent : any = await this.knex('vote_content')
+        .select('answer', 'topic_id', 'submit_time')
+        .where('nickname', `${username[0].username}`)
+        console.log(recent);
+        return recent;
+    }
+    catch (error) {
+      console.log(error);
+      return;
+    }
+    // const s : any = await this.knex('vote_content')
+    //   .select()
+    //   .where('public_or_private', 'public');
+    // console.log(s);
+  }
+  
   async updateTopic(data: any, topic: any): Promise<any> {
     const res: any = await this.knex
-      .table('spread_head')
+      .table('topic')
       .where('id', topic.id)
       .update(data);
+    console.log(data);
+    console.log(topic.id)
     return res;
   }
 
   async checkID(data: any): Promise<any> {
     try {
-      const voteID = await this.knex('spread_head').where('id', data.id);
+      const voteID = await this.knex('topic').where('id', data.id);
       if (voteID.length > 0) {
         return { success : 'Successful Search'};
       } else {
@@ -27,21 +51,20 @@ export class TopicService {
     }
   }
   async getAllPublicTopics() : Promise <any> {
-    const data : any = await this.knex('spread_head')
+    const data : any = await this.knex('topic')
       .select()
       .where('public_or_private', 'public');
-    console.log(data);
     return data;
   }
 
   async getAllTopic(loginID: any): Promise<any> {
-    const data: any = await this.knex('spread_head')
+    const data: any = await this.knex('topic')
       .select()
       .where('create_by', loginID);
     return data;
   }
   async getOneTopic(topicID: any): Promise<any> {
-    const data: any = await this.knex('spread_head')
+    const data: any = await this.knex('topic')
       .select()
       .where('id', topicID);
     return data[0];
@@ -72,12 +95,12 @@ export class TopicService {
       let isUnique = true;
       do {
         data.id = this.generateVoteCode();
-        const usedID = await this.knex('spread_head').where('id', data.id);
+        const usedID = await this.knex('topic').where('id', data.id);
         if (usedID.length > 0) {
           isUnique = false;
         } else {
           isUnique = true;
-          await this.knex('spread_head').insert(data);
+          await this.knex('topic').insert(data);
         }
       } while (!isUnique);
       return 1;

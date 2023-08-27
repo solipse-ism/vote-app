@@ -19,12 +19,23 @@ let UsersController = exports.UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
     }
+    getUserById(param) {
+        const res = this.usersService.getUserById(param);
+        return res;
+    }
     Post(body) {
-        console.log(body);
+        console.log(true);
         const res = this.usersService.checkLogin(body);
         return res;
     }
 };
+__decorate([
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", String)
+], UsersController.prototype, "getUserById", null);
 __decorate([
     (0, common_1.Post)('/checklogin'),
     __param(0, (0, common_1.Body)()),

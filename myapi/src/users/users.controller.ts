@@ -18,10 +18,15 @@ export class UsersController {
   //   const res: any = this.usersService.getAllUser();
   //   return res;
   // }
+  @Get(":id")
+  getUserById(@Param() param: string): string {
+    const res: any = this.usersService.getUserById(param);
+    return res;
+  }
 
   @Post('/checklogin')
   Post(@Body() body: any): string {
-    console.log(body);
+    console.log(true);
     const res: any = this.usersService.checkLogin(body);
     return res;
   }

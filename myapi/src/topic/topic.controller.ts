@@ -5,6 +5,12 @@ import { TopicService } from './topic.service';
 export class TopicController {
   constructor(private readonly topicService: TopicService) {}
 
+  @Get('recent/:id')
+  findAllRecentTopic(@Param() params: any): string {
+    console.log(params.id);
+    const res: any = this.topicService.getAllRecentTopic(params.id);
+    return res;
+  }
   @Get('all/:id')
   findAllTopic(@Param() params: any): string {
     const res: any = this.topicService.getAllTopic(params.id);

@@ -19,6 +19,11 @@ let TopicController = exports.TopicController = class TopicController {
     constructor(topicService) {
         this.topicService = topicService;
     }
+    findAllRecentTopic(params) {
+        console.log(params.id);
+        const res = this.topicService.getAllRecentTopic(params.id);
+        return res;
+    }
     findAllTopic(params) {
         const res = this.topicService.getAllTopic(params.id);
         return res;
@@ -52,6 +57,13 @@ let TopicController = exports.TopicController = class TopicController {
         return res;
     }
 };
+__decorate([
+    (0, common_1.Get)('recent/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", String)
+], TopicController.prototype, "findAllRecentTopic", null);
 __decorate([
     (0, common_1.Get)('all/:id'),
     __param(0, (0, common_1.Param)()),

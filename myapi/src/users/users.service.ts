@@ -11,7 +11,18 @@ export class UsersService {
   //   console.log(data[0]);
   //   return data[0];
   // }
-
+  async getUserById(loginId: any): Promise<any> {''
+    const { id } = loginId;
+    try {
+      const res: any = await this.knex
+        .select('username')
+        .from('users')
+        .where('id', id)
+      return res[0];
+    } catch {
+      return "invalid";
+    }
+  }
   async checkLogin(data: any): Promise<any> {
     const { username, password } = data;
     try {

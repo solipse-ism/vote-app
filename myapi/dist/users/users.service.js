@@ -19,6 +19,20 @@ let UsersService = exports.UsersService = class UsersService {
     constructor(knex) {
         this.knex = knex;
     }
+    async getUserById(loginId) {
+        '';
+        const { id } = loginId;
+        try {
+            const res = await this.knex
+                .select('username')
+                .from('users')
+                .where('id', id);
+            return res[0];
+        }
+        catch {
+            return "invalid";
+        }
+    }
     async checkLogin(data) {
         const { username, password } = data;
         try {

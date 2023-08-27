@@ -1,0 +1,25 @@
+{
+  "name": "vote-app1",
+  "version": "1.0.0",
+  "description": "webapp with database project",
+  "main": "index.js",
+  "scripts": {
+    "dev-webpack": "webpack --watch --mode development",
+    "build-webpack": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solipse-ism/vote-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/solipse-ism/vote-app/issues"
+  },
+  "homepage": "https://github.com/solipse-ism/vote-app#readme",
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}

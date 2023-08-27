@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="../style.css">
+	<script src="../bundle.js"></script>	
+	<title>Vote Search</title>
+</head>
+<body>
+	<title-wrapper class="flex-h justify-sb align-items-center">
+		<h1 class="text-32 text-bold text-grey">Search</h1>
+		<img class="profile-picture" src="../img/1.png" alt="">
+	</title-wrapper>
+	<search-wrapper class="search-wrap mt-28">
+		<input id="search-vote" type="text" placeholder="Search For Vote ID">
+		<svg id="search-btn" width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M27.6192 24.7078L22.1665 19.256C21.9204 19.0099 21.5867 18.8732 21.2367 18.8732H20.3452C21.8547 16.9429 22.7517 14.515 22.7517 11.8739C22.7517 5.59091 17.6599 0.5 11.3758 0.5C5.09178 0.5 0 5.59091 0 11.8739C0 18.1569 5.09178 23.2478 11.3758 23.2478C14.0174 23.2478 16.4457 22.351 18.3763 20.8418V21.7331C18.3763 22.083 18.5131 22.4166 18.7592 22.6627L24.2119 28.1145C24.726 28.6285 25.5573 28.6285 26.066 28.1145L27.6137 26.567C28.1278 26.053 28.1278 25.2218 27.6192 24.7078ZM11.3758 18.8732C7.50914 18.8732 4.37532 15.7454 4.37532 11.8739C4.37532 8.00786 7.50367 4.87457 11.3758 4.87457C15.2425 4.87457 18.3763 8.00239 18.3763 11.8739C18.3763 15.7399 15.248 18.8732 11.3758 18.8732Z" fill="#3D3D3D"/>
+		</svg>
+	</search-wrapper>
+	<nav class="flex-h width-100 align-items-center justify-sb">
+		<a class="bg-transparent flex-h justify-content-center align-items-center" id="home-icon" href="/public">
+			<i class="fa-solid fa-house text-grey" style="font-size: 3.2rem;"></i></a>
+		<a class="nav-icon-btn bg-transparent flex-h justify-content-center align-items-center" id="search-icon" href="">
+			<i class="fa-solid fa-magnifying-glass text-purple" style="font-size: 3.2rem;"></i></a>
+		<a class="nav-icon-btn bg-transparent flex-h justify-content-center align-items-center" id="admin-icon" href="/public/pages/admin.html">
+			<i class="fa-solid fa-user text-grey" style="font-size: 3.2rem;"></i></a>
+	</nav>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="../bundle.js"></script>
+	<title>Admin</title>
+</head>
+<body>
+	<title-wrapper class="flex-h justify-sb align-items-center">
+		<h1 class="text-32 text-bold text-grey admin-title">Naldo</h1>
+		<img class="profile-picture" src="../img/1.png" alt="">
+	</title-wrapper>
+	<!--flex-v --> 
+	<login class="mt-32 flex-v align-items-center login-section">
+		<input class="width-100" type="text" placeholder="Username" id="username">
+		<input class="width-100" type="text" placeholder="Password" id="password">
+		<button class="login mt-12">Login</button>
+	</login>
+	<logout-wrap class="invisible logout-wrap">
+		<button id="logout-btn">Logout?</button>
+	</logout-wrap>
+	<nav class="flex-h width-100 align-items-center justify-sb">
+		<a class="bg-transparent flex-h justify-content-center align-items-center" id="home-icon" href="/public">
+			<i class="fa-solid fa-house text-grey" style="font-size: 3.2rem;"></i></a>
+		<a class="nav-icon-btn bg-transparent flex-h justify-content-center align-items-center" id="search-icon" href="/public/pages/vote-search.html">
+			<i class="fa-solid fa-magnifying-glass text-grey" style="font-size: 3.2rem;"></i></a>
+		<a class="nav-icon-btn bg-transparent flex-h justify-content-center align-items-center" id="admin-icon" href="">
+			<i class="fa-solid fa-user text-purple" style="font-size: 3.2rem;"></i></a>
+	</nav>
+</body>
+</html>

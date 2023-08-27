@@ -19,16 +19,35 @@ let TopicService = exports.TopicService = class TopicService {
     constructor(knex) {
         this.knex = knex;
     }
+    async getAllRecentTopic(data) {
+        const userId = data;
+        try {
+            const username = await this.knex('users')
+                .select('username')
+                .where('id', `${userId}`);
+            const recent = await this.knex('vote_content')
+                .select('answer', 'topic_id', 'submit_time')
+                .where('nickname', `${username[0].username}`);
+            console.log(recent);
+            return recent;
+        }
+        catch (error) {
+            console.log(error);
+            return;
+        }
+    }
     async updateTopic(data, topic) {
         const res = await this.knex
-            .table('spread_head')
+            .table('topic')
             .where('id', topic.id)
             .update(data);
+        console.log(data);
+        console.log(topic.id);
         return res;
     }
     async checkID(data) {
         try {
-            const voteID = await this.knex('spread_head').where('id', data.id);
+            const voteID = await this.knex('topic').where('id', data.id);
             if (voteID.length > 0) {
                 return { success: 'Successful Search' };
             }
@@ -42,20 +61,19 @@ let TopicService = exports.TopicService = class TopicService {
         }
     }
     async getAllPublicTopics() {
-        const data = await this.knex('spread_head')
+        const data = await this.knex('topic')
             .select()
             .where('public_or_private', 'public');
-        console.log(data);
         return data;
     }
     async getAllTopic(loginID) {
-        const data = await this.knex('spread_head')
+        const data = await this.knex('topic')
             .select()
             .where('create_by', loginID);
         return data;
     }
     async getOneTopic(topicID) {
-        const data = await this.knex('spread_head')
+        const data = await this.knex('topic')
             .select()
             .where('id', topicID);
         return data[0];
@@ -82,13 +100,13 @@ let TopicService = exports.TopicService = class TopicService {
             let isUnique = true;
             do {
                 data.id = this.generateVoteCode();
-                const usedID = await this.knex('spread_head').where('id', data.id);
+                const usedID = await this.knex('topic').where('id', data.id);
                 if (usedID.length > 0) {
                     isUnique = false;
                 }
                 else {
                     isUnique = true;
-                    await this.knex('spread_head').insert(data);
+                    await this.knex('topic').insert(data);
                 }
             } while (!isUnique);
             return 1;

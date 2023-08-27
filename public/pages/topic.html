@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="../style.css">
+	<script src="../bundle.js"></script>
+    <title>Create Topic</title>
+</head>
+<body>
+	<title-wrapper class="flex-h justify-sb align-items-center">
+		<h1 id="topic-title" class="text-32 text-bold text-grey">Create Topic</h1>
+		<img class="profile-picture" src="../img/1.png" alt="">
+	</title-wrapper>
+	<div class="topic-section mt-56">
+		<input type="text" placeholder="Topic" id="topic-name">
+		<textarea type="text" placeholder="Description" id="topic-description"></textarea>
+		<div class="privacy width-100 flex-h justify-sb align-items-center">
+			<button class="public-btn" id="active">PUBLIC</button>
+			<button class="private-btn">PRIVATE</button>
+		</div>
+		<button class="save-create-btn mt-12" id="save-create-btn">Create</button>
+	</div>
+	<nav class="flex-h width-100 align-items-center justify-sb">
+		<a class="bg-transparent flex-h justify-content-center align-items-center" id="home-icon" href="/public">
+			<i class="fa-solid fa-house text-grey" style="font-size: 3.2rem;"></i></a>
+		<a class="nav-icon-btn bg-transparent flex-h justify-content-center align-items-center" id="search-icon" href="/public/pages/vote-search.html">
+			<i class="fa-solid fa-magnifying-glass text-grey" style="font-size: 3.2rem;"></i></a>
+		<a class="nav-icon-btn bg-transparent flex-h justify-content-center align-items-center" id="admin-icon" href="/public/pages/admin.html">
+			<i class="fa-solid fa-user text-grey" style="font-size: 3.2rem;"></i></a>
+	</nav>
+</body>
+</html>
