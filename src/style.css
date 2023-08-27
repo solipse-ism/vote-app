@@ -461,6 +461,8 @@ h1{
 	opacity: 0;
 	transition: all 0.15s ease-out;	 
 }
+.topicsss,
+.topicss,
 .topics{
 	cursor: pointer;
 	display: flex;
@@ -474,6 +476,8 @@ h1{
 	background: #FFF;
 	box-shadow: 5px 5px 0px 0px #7747FD, 4px 4px 0px 0px #DCDCDC;
 }
+.topicss topic-title,
+.topicsss topic-title,
 topic topic-title,
 .topics topic-title{
 	display: flex;
@@ -482,6 +486,8 @@ topic topic-title,
 	align-self: stretch;
 	gap: 0.8rem;
 }
+.topicss topic-title p,
+.topicsss topic-title p,
 topic topic-title p,
 .topics topic-title p{
 	align-self: center;
@@ -490,6 +496,8 @@ topic topic-title p,
 	font-weight: 600;
 	letter-spacing: -0.048rem;
 }
+.topicss topic-title .profile-picture,
+.topicsss topic-title .profile-picture,
 topic topic-title .profile-picture,
 .topics topic-title .profile-picture{
 	color: transparent;
@@ -499,6 +507,8 @@ topic topic-title .profile-picture,
 	background: #D9D9D9;
 	filter: drop-shadow(2px 2px 9px rgba(0, 0, 0, 0.10));
 }
+.topicsss p,
+.topicss p,
 .topics p{
 	align-self: stretch;
 	color: #000;

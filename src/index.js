@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       sortedPublicTopic.forEach(topic => {
         const topicsDiv = document.createElement('div');
-        topicsDiv.className = 'topics';
+        topicsDiv.className = 'topicsss';
         topicsDiv.id = topic.id;
         const topicTitle = document.createElement('topic-title');
         const topicTitleParagraph = document.createElement('p');
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const parentElement = publicSection;
         parentElement.appendChild(topicsDiv);
       });
-      const publicTopicCards = document.querySelectorAll('.topics');
+      const publicTopicCards = document.querySelectorAll('.topicsss');
       publicTopicCards.forEach(topic => {
         topic.onclick = () => {
           localStorage.setItem('voteId', topic.id);
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
       topicAmount = sortedOwnTopic.length;
       sortedOwnTopic.forEach(topic =>{
         const topicsContainer = document.createElement('div');
-        topicsContainer.classList.add('topics');
+        topicsContainer.classList.add('topicss');
         const topicTitle = document.createElement('topic-title');
         const titleParagraph = document.createElement('p');
         titleParagraph.textContent = `${topic.name}`;
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         topicsContainer.appendChild(flexSection);
         ownSection.appendChild(topicsContainer);
       });      
-      const ownTopicCards = document.querySelectorAll('.topics')
+      const ownTopicCards = document.querySelectorAll('.topicss')
       ownTopicCards.forEach((topic) => {
         const copyIcon = topic.querySelector('.copy-id');
         if (copyIcon) {
